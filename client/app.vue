@@ -12,7 +12,7 @@
   import Footer from './layout/footer.jsx'
   import Todo from './views/todo/todo.vue'
   export default {
-    data() {
+    data () {
       return {}
     },
     components: {

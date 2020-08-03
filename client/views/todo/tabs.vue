@@ -26,21 +26,21 @@
         required: true
       }
     },
-    data() {
+    data () {
       return {
         states: ['all', 'active', 'completed']
       }
     },
     computed: {
-      unFinishedTodoLength() {
-        return this.todos.filter((todo) => todo.completed == false).length;
+      unFinishedTodoLength () {
+        return this.todos.filter((todo) => todo.completed === false).length
       }
     },
     methods: {
-      clearAllCompleted() {
+      clearAllCompleted () {
         this.$emit('clearAllCompleted')
       },
-      toggleFilter(state) {
+      toggleFilter (state) {
         this.$emit('toggle', state)
       }
     }
