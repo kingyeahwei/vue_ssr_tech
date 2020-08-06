@@ -1,1 +1,1 @@
-import './data-binding'
+import './component/define'
