@@ -1,1 +1,1 @@
-import './component/define'
+import './component/features'
