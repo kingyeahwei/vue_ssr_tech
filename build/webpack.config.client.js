@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 const HTMLPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
@@ -13,19 +13,24 @@ const defaultPlugins = [
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
   }),
-  new HTMLPlugin()
+  new HTMLPlugin({
+    template: path.join(__dirname, 'template.html')
+  })
 ]
 
 const devServer = {
   port: 8000,
   host: '0.0.0.0',
   overlay: {
-    errors: true,
+    errors: true
   },
-  hot: true,
+  historyApiFallback: {
+    index: '/index.html'
+  },
+  hot: true
 }
 
-let config;
+let config
 if (isDev) {
   config = merge(baseConfig, {
     devtool: '#cheap-module-eval-source-map',
@@ -94,4 +99,4 @@ if (isDev) {
   })
 }
 
-module.exports = config;
+module.exports = config
