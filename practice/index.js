@@ -1,1 +1,1 @@
-import './component/features'
+import './component'
