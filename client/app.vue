@@ -17,9 +17,9 @@
 <script>
   import Header from './layout/header.vue'
   import Footer from './layout/footer.jsx'
-  import {mapState, mapGetters, mapActions, mapMutations} from 'vuex' // eslint-disable
-  // import Todo from './views/todo/todo.vue'
-  export default {
+  import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
+// import Todo from './views/todo/todo.vue'
+export default {
     data () {
       return {}
     },
@@ -29,24 +29,31 @@
       // Todo
     },
     mounted () {
-      console.log(this.$store)
+      console.log('---', this.$store)
       // this.$store.dispatch('updateCountAsync', {num: 3, time: 1000})
-      // this.updateCountAsync({num: 3, time: 1000})
+      this.updateCountAsync({num: 3, time: 1000})
       // this.$store.state.count = 3
-      let i = 1
-      setInterval(() => {
-        // this.$store.commit('updateCount', {
-        //   num: i++,
-        //   num2: 2
-        // })
-        this.updateCount({num: i++, num2: 2})
-      }, 1000)
+      // let i = 1
+      // setInterval(() => {
+      //   this.$store.commit('updateCount', {
+      //     num: i++,
+      //     num2: 2
+      //   })
+      //   // this.updateCount({num: i++, num2: 2})
+      // }, 1000)
+      // this['a/add']()
+      // this['b/testAction']()
     },
     computed: {
       ...mapState({
         counter: (state) => state.count
+        // textA: (state) => state.a.text,
+        // textC: (state) => state.c.text
       }),
-      ...mapGetters(['fullName'])
+      ...mapGetters({
+        fullName: 'fullName'
+        // textPlus: 'a/textPlus'
+      })
       // fullName () {
       //   return this.$store.getters.fullName
       // }

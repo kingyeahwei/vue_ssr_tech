@@ -27,6 +27,7 @@ const devServer = {
   historyApiFallback: {
     index: '/public/index.html'
   },
+  headers: { 'Access-Control-Allow-Origin': '*' },
   hot: true
 }
 
