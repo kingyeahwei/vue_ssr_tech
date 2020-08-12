@@ -2,6 +2,7 @@
   <div id="app">
     <div id="cover"></div>
     <Header></Header>
+    <p>{{fullName}}-{{counter}}</p>
     <router-link to="/app/123">app123</router-link>
     <router-link to="/app/456">app456</router-link>
     <router-link to="/login">login</router-link>
@@ -16,6 +17,7 @@
 <script>
   import Header from './layout/header.vue'
   import Footer from './layout/footer.jsx'
+  import {mapState, mapGetters} from 'vuex' // eslint-disable
   // import Todo from './views/todo/todo.vue'
   export default {
     data () {
@@ -25,8 +27,23 @@
       Header,
       Footer
       // Todo
+    },
+    mounted () {
+      console.log(this.$store)
+      let i = 1
+      setInterval(() => {
+        this.$store.commit('updateCount', i++)
+      }, 1000)
+    },
+    computed: {
+      ...mapState({
+        counter: (state) => state.count
+      }),
+      ...mapGetters(['fullName'])
+      // fullName () {
+      //   return this.$store.getters.fullName
+      // }
     }
-
   }
 </script>
 
