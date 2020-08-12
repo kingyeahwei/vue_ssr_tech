@@ -23,6 +23,9 @@
   let id = 0
   export default {
     props: ['id'],
+    mounted () {
+      console.log('todo mounted')
+    },
     data () {
       return {
         todos: [],
@@ -63,6 +66,21 @@
       clearAllCompleted () {
         this.todos = this.todos.filter(todo => !todo.completed)
       }
+    },
+    beforeRouteEnter (to, from, next) {
+      console.log('todo before enter')
+      next()
+    },
+    beforeRouteUpdate (to, from, next) {
+      console.log('todo before update')
+      next()
+    },
+    beforeRouteLeave (to, from, next) {
+      console.log('todo before leave')
+      if (global.confirm('are you sure')) {
+        next()
+      }
+      // next()
     }
   }
 </script>
