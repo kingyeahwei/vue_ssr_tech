@@ -17,7 +17,7 @@
 <script>
   import Header from './layout/header.vue'
   import Footer from './layout/footer.jsx'
-  import {mapState, mapGetters} from 'vuex' // eslint-disable
+  import {mapState, mapGetters, mapActions, mapMutations} from 'vuex' // eslint-disable
   // import Todo from './views/todo/todo.vue'
   export default {
     data () {
@@ -30,9 +30,16 @@
     },
     mounted () {
       console.log(this.$store)
+      // this.$store.dispatch('updateCountAsync', {num: 3, time: 1000})
+      // this.updateCountAsync({num: 3, time: 1000})
+      // this.$store.state.count = 3
       let i = 1
       setInterval(() => {
-        this.$store.commit('updateCount', i++)
+        // this.$store.commit('updateCount', {
+        //   num: i++,
+        //   num2: 2
+        // })
+        this.updateCount({num: i++, num2: 2})
       }, 1000)
     },
     computed: {
@@ -43,6 +50,10 @@
       // fullName () {
       //   return this.$store.getters.fullName
       // }
+    },
+    methods: {
+      ...mapActions(['updateCountAsync']),
+      ...mapMutations(['updateCount'])
     }
   }
 </script>
