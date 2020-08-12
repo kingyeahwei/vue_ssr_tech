@@ -5,7 +5,9 @@
     <router-link to="/app">app</router-link>
     <router-link to="/login">login</router-link>
     <!--<Todo></Todo>-->
-    <router-view></router-view>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <Footer></Footer>
   </div>
 </template>
@@ -23,6 +25,7 @@
       Footer,
       Todo
     }
+
   }
 </script>
 

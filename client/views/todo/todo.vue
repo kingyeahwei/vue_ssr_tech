@@ -19,8 +19,10 @@
 <script>
   import Item from './item.vue'
   import Tabs from './tabs.vue'
+
   let id = 0
-export default {
+  export default {
+    props: ['id'],
     data () {
       return {
         todos: [],
@@ -50,8 +52,10 @@ export default {
         e.target.value = ''
       },
       deleteTodo (id) {
-        // eslint-disable-next-line
-        this.todos.splice(this.todos.findIndex(todo => { todo.id === id }), 1)
+        this.todos.splice(this.todos.findIndex(todo => {
+          // eslint-disable-next-line
+          todo.id === id
+        }), 1)
       },
       toggleFilter (state) {
         this.filter = state
@@ -64,12 +68,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .real-app{
+  .real-app {
     width 600px
     margin 0 auto
     box-shadow 0 0 5px #666
   }
-  .add-input{
+
+  .add-input {
     position: relative;
     margin: 0;
     width: 100%;
@@ -87,6 +92,6 @@ export default {
     font-smoothing: antialiased;
     padding: 16px 16px 16px 60px;
     border: none;
-    box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
   }
 </style>
